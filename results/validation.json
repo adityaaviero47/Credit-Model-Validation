@@ -1,0 +1,229 @@
+{
+  "samples": {
+    "train": 100820,
+    "holdout": 43072,
+    "oot": 152692
+  },
+  "default_rate": {
+    "train": 0.1262,
+    "holdout": 0.1289,
+    "oot": 0.1429
+  },
+  "oot_unresolved_excluded_pct": null,
+  "discrimination": {
+    "train": {
+      "auc": 0.7293,
+      "gini": 0.4585,
+      "ks": 0.3323
+    },
+    "holdout": {
+      "auc": 0.6673,
+      "gini": 0.3347,
+      "ks": 0.2461
+    },
+    "oot": {
+      "auc": 0.6725,
+      "gini": 0.345,
+      "ks": 0.2518
+    }
+  },
+  "benchmarks_oot": {
+    "model_gini": 0.345,
+    "challenger_logistic_gini": 0.3261,
+    "lendingclub_subgrade_gini": 0.3204
+  },
+  "calibration_oot": {
+    "mean_predicted": 0.1271,
+    "observed": 0.1429,
+    "gap_pts": 1.57,
+    "deciles_outside_2sd": 9,
+    "brier": 0.117
+  },
+  "stability": {
+    "score_psi": 0.0028,
+    "top_feature_csi": {
+      "pct_tl_nvr_dlq": 0.0563,
+      "num_tl_op_past_12m": 0.0525,
+      "acc_open_past_24mths": 0.0341,
+      "revol_util": 0.0324,
+      "avg_cur_bal": 0.0303
+    }
+  },
+  "robustness_oot": {
+    "dti x1.2": {
+      "mean_pd_change_pts": 0.391,
+      "wrong_direction_pct": 10.73
+    },
+    "annual_inc x0.8": {
+      "mean_pd_change_pts": 1.35,
+      "wrong_direction_pct": 8.72
+    },
+    "inq_last_6mths x2.0": {
+      "mean_pd_change_pts": 1.021,
+      "wrong_direction_pct": 2.81
+    },
+    "revol_util x1.2": {
+      "mean_pd_change_pts": 0.955,
+      "wrong_direction_pct": 7.64
+    },
+    "10% revol_util missing": {
+      "gini": 0.3401
+    }
+  },
+  "segments_oot": {
+    "purpose=credit_card": {
+      "n": 37630,
+      "gini": 0.3567,
+      "observed": 0.1199,
+      "predicted": 0.11
+    },
+    "purpose=debt_consolidation": {
+      "n": 89236,
+      "gini": 0.3327,
+      "observed": 0.1494,
+      "predicted": 0.1317
+    },
+    "purpose=home_improvement": {
+      "n": 8137,
+      "gini": 0.3674,
+      "observed": 0.1239,
+      "predicted": 0.113
+    },
+    "purpose=major_purchase": {
+      "n": 2703,
+      "gini": 0.3458,
+      "observed": 0.1387,
+      "predicted": 0.1189
+    },
+    "purpose=other": {
+      "n": 7614,
+      "gini": 0.2979,
+      "observed": 0.1617,
+      "predicted": 0.1538
+    },
+    "home_ownership=MORTGAGE": {
+      "n": 71945,
+      "gini": 0.3339,
+      "observed": 0.1161,
+      "predicted": 0.1054
+    },
+    "home_ownership=OWN": {
+      "n": 15317,
+      "gini": 0.3202,
+      "observed": 0.1519,
+      "predicted": 0.1334
+    },
+    "home_ownership=RENT": {
+      "n": 65429,
+      "gini": 0.3201,
+      "observed": 0.1702,
+      "predicted": 0.1495
+    },
+    "verification_status=Not Verified": {
+      "n": 57093,
+      "gini": 0.3331,
+      "observed": 0.122,
+      "predicted": 0.1141
+    },
+    "verification_status=Source Verified": {
+      "n": 55515,
+      "gini": 0.3304,
+      "observed": 0.1491,
+      "predicted": 0.1294
+    },
+    "verification_status=Verified": {
+      "n": 40084,
+      "gini": 0.3524,
+      "observed": 0.1639,
+      "predicted": 0.1425
+    }
+  },
+  "top_drivers": {
+    "revol_util": 0.029,
+    "acc_open_past_24mths": 0.0202,
+    "inq_last_6mths": 0.0181,
+    "annual_inc": 0.0179,
+    "bc_util": 0.0126,
+    "loan_to_income": 0.0107
+  },
+  "rag": {
+    "OOT discrimination (Gini)": [
+      0.345,
+      "AMBER"
+    ],
+    "Gini drop holdout->OOT (%)": [
+      -3.1,
+      "GREEN"
+    ],
+    "Score PSI holdout->OOT": [
+      0.003,
+      "GREEN"
+    ],
+    "Max feature CSI": [
+      0.0563,
+      "GREEN"
+    ],
+    "OOT calibration gap (pts)": [
+      1.57,
+      "AMBER"
+    ],
+    "Deciles outside 2 s.d.": [
+      9,
+      "RED"
+    ],
+    "Monotonicity violations (%)": [
+      10.73,
+      "RED"
+    ]
+  },
+  "weakest_segment": [
+    "purpose=other",
+    0.2979
+  ],
+  "overfit_gini_drop_train_to_holdout_pct": 27.0,
+  "remediation": {
+    "monotonic_model": {
+      "oot_gini": 0.3443,
+      "monotonicity_violation_pct": 0.0
+    },
+    "recalibrated_h2_2014": {
+      "n": 80739,
+      "mean_predicted": 0.1357,
+      "observed": 0.1523,
+      "gap_pts": 1.66,
+      "deciles_outside_2sd": 8,
+      "before_gap_pts_same_sample": 2.4,
+      "before_deciles_outside_2sd": 9
+    }
+  },
+  "rag_rules": {
+    "oot_gini": [
+      0.35,
+      0.25
+    ],
+    "gini_drop_pct": [
+      10,
+      20
+    ],
+    "score_psi": [
+      0.1,
+      0.25
+    ],
+    "max_feature_csi": [
+      0.1,
+      0.25
+    ],
+    "calib_gap_pts": [
+      1.0,
+      2.0
+    ],
+    "buckets_outside_2sd": [
+      2,
+      4
+    ],
+    "monotonic_violation_pct": [
+      1.0,
+      5.0
+    ]
+  }
+}
